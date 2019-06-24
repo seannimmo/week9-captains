@@ -15,8 +15,14 @@ class CaptainController extends Controller
             abort(404, 'Captain not found');
         }
 
-        $view = view('captain/show');
+        $view = view('captain/show', compact($captain));
         $view->captain = $captain;
+        return $view;
+    }
+
+    public function index()
+    {
+        $view = view('captain/index');
         return $view;
     }
 }
