@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/start', 'HomeController@index');
+
 Route::get('/captain/show/{captain}', 'CaptainController@show');
 
 Route::get('/captains', 'CaptainController@index');
+
+Route::post('/captain/show/{captain}', "CaptainController@store");

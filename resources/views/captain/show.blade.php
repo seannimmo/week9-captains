@@ -27,7 +27,7 @@
     <section class="captain-assign">
         <h2>Assign a captain</h2>
 
-        <form action="" method="post">
+        <form action="{{ action('CaptainController@store', 'captain') }}" method="post">
 
             <input type="text" name="subject" placeholder="Cause for assignment">
 

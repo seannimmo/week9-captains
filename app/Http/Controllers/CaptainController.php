@@ -22,7 +22,20 @@ class CaptainController extends Controller
 
     public function index()
     {
-        $view = view('captain/index');
+        $captains = \App\Captain::orderBy('name', 'asc')->get();
+        $view = view('captain/index', compact('captains'));
         return $view;
+    }
+
+    public function store($captain_slug, Request $request)
+    {
+        $captain = \App\Captain::where('slug', $captain_slug)->first();
+        $assignment = new \App\Assignment();
+        $assignment->subject = $request->subject;
+        $assignment->description = $request->description;
+        $assignment->save();
+        var_dump($assignment);
+        
+        return redirect(action('CaptainController@show', ['captain_slug' => 'kirk']));
     }
 }
